@@ -53,15 +53,14 @@ namespace Dapper_API.Repositories
             }
         }
 
-        public async void UpdateCategory(UpdateCategoryDto categoryDto, int id,bool status = true)
+        public async void UpdateCategory(UpdateCategoryDto categoryDto)
         {
-            string sql = "UPDATE Category SET CategoryName = @name AND CategoryStatus = @status  WHERE CategoryId = @id";
+            string sql = "UPDATE Category SET CategoryName = @name, CategoryStatus = @status WHERE CategoryId = @id";
 
             var parameters = new DynamicParameters();
-
-            parameters.Add("@id", id);
+            parameters.Add("@id", categoryDto.CategoryId);
             parameters.Add("@name", categoryDto.CategoryName);
-            parameters.Add("@status", status);
+            parameters.Add("@status", categoryDto.CategoryStatus);
 
             using (var connection = _context.CreateConnection())
             {

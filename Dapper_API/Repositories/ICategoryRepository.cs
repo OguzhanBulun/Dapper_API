@@ -7,6 +7,6 @@ namespace Dapper_API.Repositories
         Task<List<ResultCategoryDto>> GetAllCategoryAsync();
         void CreateCategory(CreateCategoryDto categoryDto);
         void DeleteCategory(int id);
-        void UpdateCategory(UpdateCategoryDto categoryDto, int id, bool status = true);
+        void UpdateCategory(UpdateCategoryDto categoryDto);
     }
 }

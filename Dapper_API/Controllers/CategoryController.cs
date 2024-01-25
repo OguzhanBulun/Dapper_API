@@ -45,9 +45,9 @@ namespace Dapper_API.Controllers
 
         [HttpPut]
         [Route("UpdateCategory")]
-        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto categoryDto, int id, bool status)
+        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto categoryDto)
         {
-            _categoryRepository.UpdateCategory(categoryDto, id, status);
+            _categoryRepository.UpdateCategory(categoryDto);
 
             return Ok("Category updated successfully.");
         }
