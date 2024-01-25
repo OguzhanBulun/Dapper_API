@@ -22,5 +22,18 @@ namespace Dapper_API.Repositories.ProductRepository
                 return result.ToList();
             }
         }
+
+        public async Task<List<ResultProductWithCategory>> ListProductWithCategory()
+        {
+            var sql = "Select p.ProductId, p.Label, p.Price, p.City, p.District,  c.CategoryName " +
+                "From dbo.Product p" +
+                " JOIN Category c on p.ProductCategory = c.CategoryId";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var result = await  connection.QueryAsync<ResultProductWithCategory>(sql);
+                return result.ToList();
+            }
+        }
     }
 }

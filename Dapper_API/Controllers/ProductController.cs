@@ -23,5 +23,14 @@ namespace Dapper_API.Controllers
 
             return Ok(products);
         }
+
+        [HttpGet]
+        [Route("ListProductsWithCategory")]
+        public async Task<IActionResult> ListProductsWithCategory()
+        {
+            var products = await _productRepository.ListProductWithCategory();
+
+            return Ok(products);
+        }
     }
 }
