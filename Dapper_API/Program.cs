@@ -1,5 +1,6 @@
 using Dapper_API.Models.DapperContext;
-using Dapper_API.Repositories;
+using Dapper_API.Repositories.CategoryRepository;
+using Dapper_API.Repositories.ProductRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient<Context>();
 builder.Services.AddTransient<ICategoryRepository,CategoryRepository>();
+builder.Services.AddTransient<IProductRepository,ProductRepository>();
 
 
 builder.Services.AddControllers();

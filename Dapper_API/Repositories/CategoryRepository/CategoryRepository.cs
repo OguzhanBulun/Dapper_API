@@ -2,7 +2,7 @@
 using Dapper_API.Models.DapperContext;
 using Dapper_API.Models.Dtos.CategoryDtos;
 
-namespace Dapper_API.Repositories
+namespace Dapper_API.Repositories.CategoryRepository
 {
     public class CategoryRepository : ICategoryRepository
     {
@@ -65,6 +65,21 @@ namespace Dapper_API.Repositories
             using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(sql, parameters);
+            }
+        }
+
+        public async Task<GetCategoryByIdDto> GetCategoryByIdAsync(int id)
+        {
+            string sql = "SELECT * FROM Category WHERE CategoryId = @id";
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@id", id);
+
+            using (var connection = _context.CreateConnection())
+            {
+                var result = await connection.QueryFirstOrDefaultAsync<GetCategoryByIdDto>(sql, parameters);
+                return result;
             }
         }
     }

@@ -1,6 +1,5 @@
 ﻿using Dapper_API.Models.Dtos.CategoryDtos;
-using Dapper_API.Repositories;
-using Microsoft.AspNetCore.Http;
+using Dapper_API.Repositories.CategoryRepository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dapper_API.Controllers
@@ -50,6 +49,15 @@ namespace Dapper_API.Controllers
             _categoryRepository.UpdateCategory(categoryDto);
 
             return Ok("Category updated successfully.");
+        }
+
+        [HttpGet]
+        [Route("GetCategoryById")]
+        public async Task<IActionResult> GetCategoryById(int id)
+        {
+            var category = await _categoryRepository.GetCategoryByIdAsync(id);
+
+            return Ok(category);
         }
     }
 }

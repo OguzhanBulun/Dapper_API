@@ -1,6 +1,6 @@
 ﻿using Dapper_API.Models.Dtos.CategoryDtos;
 
-namespace Dapper_API.Repositories
+namespace Dapper_API.Repositories.CategoryRepository
 {
     public interface ICategoryRepository
     {
@@ -8,5 +8,6 @@ namespace Dapper_API.Repositories
         void CreateCategory(CreateCategoryDto categoryDto);
         void DeleteCategory(int id);
         void UpdateCategory(UpdateCategoryDto categoryDto);
+        Task<GetCategoryByIdDto> GetCategoryByIdAsync(int id);
     }
 }
