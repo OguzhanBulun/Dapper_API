@@ -2,7 +2,7 @@
 
 namespace Dapper_UI.Controllers
 {
-    public class DefaultBaseController : Controller
+    public class Default : Controller
     {
         public IActionResult Index()
         {
